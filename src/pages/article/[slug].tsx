@@ -1,3 +1,4 @@
+import { chakraMdComps } from '@/lib/chakraMarkdown'
 import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
 import getStrapiMedia from '@/lib/getMedia'
@@ -24,16 +25,11 @@ const Article = ({ article, categories }: any) => {
 			</VStack>
 			<Seo seo={seo} />
 			{imageUrl && <Image src={imageUrl} maxW={'600'} borderRadius={'lg'} alt={''}></Image>}
-			<VStack px={300}>
-				<VStack
-					bg={'gray.900'}
-					color={'white'}
-					p={8}
-					borderRadius={'lg'}
-					boxShadow={'lg'}
-					px={8}
-				>
-					<ReactMarkdown className='small'>{article.attributes.content}</ReactMarkdown>
+			<VStack px={300} alignItems='stretch'>
+				<VStack p={8} borderRadius={'lg'} boxShadow={'lg'} px={8} alignItems='stretch'>
+					<ReactMarkdown components={chakraMdComps}>
+						{article.attributes.content}
+					</ReactMarkdown>
 
 					{/* <Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment> */}
 				</VStack>

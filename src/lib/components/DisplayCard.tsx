@@ -4,12 +4,6 @@ import { useEffect } from 'react'
 import { fetchAPI } from '../api'
 import LinkWrapper from './LinkWrapper'
 
-// export async function fetchAllTags() {
-// 	const tags = await fetchAPI(`/tags`)
-// 	console.log('tags.data is:', tags.data)
-// 	return tags.data as TagType[]
-// }
-
 export default function DisplayCard({ article }: any) {
 	// console.log('articled:', article.attributes.tags)
 	const { slug, tags, category } = article.attributes
@@ -72,23 +66,6 @@ export default function DisplayCard({ article }: any) {
 			<HStack py={4}>
 				{tags.data.length ? <ButtonGroup>{tagLabels}</ButtonGroup> : <Text>No tags!</Text>}
 			</HStack>
-
-			{/* <HStack py={4}>
-				{tags.data.length ? (
-					<Button
-						bg={'gray.700'}
-						size={'sm'}
-						fontSize={'sm'}
-						color={'teal.400'}
-						fontWeight={'bold'}
-						textTransform={'uppercase'}
-					>
-						{tags.data[0].attributes.name}
-					</Button>
-				) : (
-					<Text>No tags!</Text>
-				)}
-			</HStack> */}
 		</LinkWrapper>
 	)
 }
