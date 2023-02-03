@@ -1,4 +1,4 @@
-import { Heading, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, Heading, HStack, Text, VStack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import LinkWrapper from './LinkWrapper'
 
@@ -9,8 +9,6 @@ export default function DisplayCard({ article }: any) {
 	const {
 		data: { attributes: categoryData },
 	} = category
-
-	console.log('tagsData is', tags.data[0].attributes)
 
 	return (
 		<LinkWrapper href={`/article/${slug}`}>
@@ -43,19 +41,6 @@ export default function DisplayCard({ article }: any) {
 							{categoryData.name}
 						</Text>
 
-						{tags.data.length ? (
-							<Text
-								fontSize={'sm'}
-								color={'teal.400'}
-								fontWeight={'bold'}
-								textTransform={'uppercase'}
-							>
-								{tags.data[0].attributes.Tag}
-							</Text>
-						) : (
-							<Text>No tags!</Text>
-						)}
-
 						<Heading fontFamily={'Lora'} fontSize={'2xl'}>
 							{article.attributes.title}
 						</Heading>
@@ -63,6 +48,23 @@ export default function DisplayCard({ article }: any) {
 					</VStack>
 				</motion.div>
 			</VStack>
+
+			<HStack py={4}>
+				{tags.data.length ? (
+					<Button
+						bg={'gray.700'}
+						size={'sm'}
+						fontSize={'sm'}
+						color={'teal.400'}
+						fontWeight={'bold'}
+						textTransform={'uppercase'}
+					>
+						{tags.data[0].attributes.Tag}
+					</Button>
+				) : (
+					<Text>No tags!</Text>
+				)}
+			</HStack>
 		</LinkWrapper>
 	)
 }
