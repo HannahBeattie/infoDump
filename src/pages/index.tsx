@@ -5,7 +5,7 @@ import { Heading } from '@chakra-ui/react'
 import { fetchAPI } from '../lib/api'
 
 const Home = ({ articles, categories, homepage }: any) => {
-	console.log(`<Home> homepage:`, homepage)
+	// console.log(`<Home> homepage:`, homepage)
 	return (
 		<Layout categories={categories}>
 			<Seo seo={homepage.attributes.seo} />
@@ -23,12 +23,6 @@ const Home = ({ articles, categories, homepage }: any) => {
 		</Layout>
 	)
 }
-
-// export async function fetchAllTags() {
-// 	const tags = await fetchAPI(`/tags`)
-// 	console.log('tags.data is:', tags.data)
-// 	return tags.data as TagType[]
-// }
 
 export async function getStaticProps() {
 	// Run API calls in parallel

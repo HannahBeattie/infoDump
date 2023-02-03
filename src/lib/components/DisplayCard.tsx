@@ -1,14 +1,34 @@
-import { Box, Button, Heading, HStack, Text, VStack } from '@chakra-ui/react'
+import { Box, Button, ButtonGroup, Heading, HStack, Text, VStack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
+import { fetchAPI } from '../api'
 import LinkWrapper from './LinkWrapper'
 
+// export async function fetchAllTags() {
+// 	const tags = await fetchAPI(`/tags`)
+// 	console.log('tags.data is:', tags.data)
+// 	return tags.data as TagType[]
+// }
+
 export default function DisplayCard({ article }: any) {
+	// console.log('articled:', article.attributes.tags)
 	const { slug, tags, category } = article.attributes
-	console.log('tags are', tags)
+	// console.log('tags..data.attributes.name are', tags.data[0].attributes.name)
 	const { data: tagsData } = tags
 	const {
 		data: { attributes: categoryData },
 	} = category
+
+	const itemsTags = article.attributes.tags.data
+
+	let eachTag = itemsTags.map((tag) => tag.attributes.name)
+	console.log('eachTag is:', eachTag)
+
+	// console.log('items tags', itemsTags)
+
+	const tagLabels = eachTag.map((tag: string, id: string) => {
+		return <Button key={id}> {tag}</Button>
+	})
 
 	return (
 		<LinkWrapper href={`/article/${slug}`}>
@@ -50,6 +70,10 @@ export default function DisplayCard({ article }: any) {
 			</VStack>
 
 			<HStack py={4}>
+				{tags.data.length ? <ButtonGroup>{tagLabels}</ButtonGroup> : <Text>No tags!</Text>}
+			</HStack>
+
+			{/* <HStack py={4}>
 				{tags.data.length ? (
 					<Button
 						bg={'gray.700'}
@@ -59,12 +83,12 @@ export default function DisplayCard({ article }: any) {
 						fontWeight={'bold'}
 						textTransform={'uppercase'}
 					>
-						{tags.data[0].attributes.Tag}
+						{tags.data[0].attributes.name}
 					</Button>
 				) : (
 					<Text>No tags!</Text>
 				)}
-			</HStack>
+			</HStack> */}
 		</LinkWrapper>
 	)
 }
