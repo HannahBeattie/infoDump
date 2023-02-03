@@ -3,26 +3,18 @@ import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { fetchAPI } from '../api'
 import LinkWrapper from './LinkWrapper'
+import Tags from './Tags'
 
 export default function DisplayCard({ article }: any) {
 	// console.log('articled:', article.attributes.tags)
 	const { slug, tags, category } = article.attributes
 	// console.log('tags..data.attributes.name are', tags.data[0].attributes.name)
-	const { data: tagsData } = tags
+
 	const {
 		data: { attributes: categoryData },
 	} = category
 
-	const itemsTags = article.attributes.tags.data
-
-	let eachTag = itemsTags.map((tag: any) => tag.attributes.name)
-	console.log('eachTag is:', eachTag)
-
-	// console.log('items tags', itemsTags)
-
-	const tagLabels = eachTag.map((tag: string, id: string) => {
-		return <Button key={id}> {tag}</Button>
-	})
+	const itemsTags = tags.data
 
 	return (
 		<LinkWrapper href={`/article/${slug}`}>
@@ -64,7 +56,7 @@ export default function DisplayCard({ article }: any) {
 			</VStack>
 
 			<HStack py={4}>
-				{tags.data.length ? <ButtonGroup>{tagLabels}</ButtonGroup> : <Text>No tags!</Text>}
+				{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
 			</HStack>
 		</LinkWrapper>
 	)

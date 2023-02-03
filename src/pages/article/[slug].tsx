@@ -1,6 +1,7 @@
 import { chakraMdComps } from '@/lib/chakraMarkdown'
 import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
+import Tags from '@/lib/components/Tags'
 import getStrapiMedia from '@/lib/getMedia'
 import {
 	Button,
@@ -26,12 +27,7 @@ const Article = ({ article, categories }: any) => {
 	}
 
 	const { description, tags, content, author, title } = article.attributes
-
-	const itemsTags = article.attributes.tags.data
-	let eachTag = itemsTags.map((tag: any) => tag.attributes.name)
-	const tagLabels = eachTag.map((tag: string, id: string) => {
-		return <Button key={id}> {tag}</Button>
-	})
+	const itemsTags = tags.data
 
 	return (
 		<Layout categories={categories.data}>
@@ -51,7 +47,7 @@ const Article = ({ article, categories }: any) => {
 			</VStack>
 			<Text color={'black'}>by {author.data.attributes.name}</Text>
 			<HStack>
-				{tags.data.length ? <ButtonGroup>{tagLabels}</ButtonGroup> : <Text>No tags!</Text>}
+				{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
 			</HStack>
 
 			{/* <div>
