@@ -12,7 +12,7 @@ const Home = ({ articles, categories, homepage }: any) => {
 			<Seo seo={homepage.attributes.seo} />
 			<Heading
 				flex={1}
-				fontSize={'5xl'}
+				fontSize={{ base: '3xl', md: '5xl' }}
 				fontWeight={'bold'}
 				color={'blackAlpha.800'}
 				fontFamily={'Montserrat Subrayada'}

@@ -18,8 +18,8 @@ export default function DisplayCard({ article }: any) {
 				bg={'blackAlpha.900'}
 				flex={1}
 				alignItems={'stretch'}
-				width={600}
-				height={200}
+				width={{ md: 600 }}
+				height={{ md: 200 }}
 				borderRadius={'xl'}
 				boxShadow={'xl'}
 			>
