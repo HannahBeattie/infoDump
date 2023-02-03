@@ -17,7 +17,7 @@ const Article = ({ article, categories }: any) => {
 
 	return (
 		<Layout categories={categories.data}>
-			<VStack spacing={4} color={'white'}>
+			<VStack spacing={4} color={'gray.900'}>
 				<Heading> {article.attributes.title}</Heading>
 
 				<Text fontWeight={'bold'}> {article.attributes.description}</Text>

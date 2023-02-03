@@ -12,10 +12,10 @@ const Home = ({ articles, categories, homepage }: any) => {
 			<Seo seo={homepage.attributes.seo} />
 			<Heading
 				flex={1}
-				textTransform={'uppercase'}
 				fontSize={'5xl'}
-				fontWeight={800}
-				color={'whiteAlpha.900'}
+				fontWeight={'bold'}
+				color={'blackAlpha.800'}
+				fontFamily={'Montserrat Subrayada'}
 			>
 				{homepage.attributes.hero.title}
 			</Heading>

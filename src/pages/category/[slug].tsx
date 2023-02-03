@@ -9,11 +9,20 @@ const Category = ({ category, categories }: any) => {
 		metaTitle: category.attributes.name,
 		metaDescription: `All ${category.attributes.name} articles`,
 	}
+	console.log('carogory is', category)
 
 	return (
 		<Layout categories={categories.data}>
 			<Seo seo={seo} />
-			<Heading color={'white'}> {category.attributes.name}</Heading>
+			<Heading
+				fontSize={'5xl'}
+				fontWeight={'bold'}
+				color={'blackAlpha.800'}
+				fontFamily={'Montserrat Subrayada'}
+			>
+				{' '}
+				{category.attributes.name}
+			</Heading>
 			<Articles articles={category.attributes.articles.data} />
 		</Layout>
 	)

@@ -1,8 +1,6 @@
-import { Card, Grid, GridItem, Heading, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
-import NextLink from 'next/link'
-import MyImage from './Image'
+import { Heading, Text, VStack } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 import LinkWrapper from './LinkWrapper'
-import { motion, Reorder } from 'framer-motion'
 
 export default function DisplayCard({ article }: any) {
 	return (
@@ -14,10 +12,10 @@ export default function DisplayCard({ article }: any) {
 				border={'1px'}
 				borderBottom={'4px'}
 				borderRight={'4px'}
-				borderColor={'cyan'}
-				borderBottomColor={'teal.600'}
-				borderRightColor={'teal.800'}
-				bg={'blackAlpha.600'}
+				borderColor={'whiteAlpha.500'}
+				borderBottomColor={'whiteAlpha.700'}
+				borderRightColor={'whiteAlpha.800'}
+				bg={'blackAlpha.900'}
 				flex={1}
 				alignItems={'stretch'}
 				width={600}
@@ -29,13 +27,15 @@ export default function DisplayCard({ article }: any) {
 					<VStack alignItems={'stretch'}>
 						<Text
 							fontSize={'sm'}
-							color={'teal'}
+							color={'red.400'}
 							fontWeight={'bold'}
 							textTransform={'uppercase'}
 						>
 							{article.attributes.category.data.attributes.name}
 						</Text>
-						<Heading fontSize={'2xl'}>{article.attributes.title}</Heading>
+						<Heading fontFamily={'Lora'} fontSize={'2xl'}>
+							{article.attributes.title}
+						</Heading>
 						<Text fontSize={'lg'}>{article.attributes.description}</Text>
 					</VStack>
 				</motion.div>

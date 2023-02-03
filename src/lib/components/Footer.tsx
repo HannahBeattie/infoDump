@@ -3,7 +3,7 @@ import React from 'react'
 
 function Footer() {
 	return (
-		<VStack flex={1} alignItems={'stretch'} spacing={0} boxShadow={'dark-lg'}>
+		<VStack alignItems={'stretch'} spacing={0} boxShadow={'dark-lg'}>
 			<Divider />
 			<HStack py={4} px={4} flex={1} bg={'blackAlpha.900'}></HStack>
 		</VStack>
