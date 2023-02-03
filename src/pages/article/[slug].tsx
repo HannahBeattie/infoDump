@@ -3,29 +3,18 @@ import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
 import Tags from '@/lib/components/Tags'
 import getStrapiMedia from '@/lib/getMedia'
-import {
-	Button,
-	ButtonGroup,
-	Heading,
-	HStack,
-	Image,
-	TagLabel,
-	Text,
-	VStack,
-} from '@chakra-ui/react'
+import { Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import ReactMarkdown from 'react-markdown'
 import { fetchAPI } from '../../lib/api'
 
 const Article = ({ article, categories }: any) => {
 	const imageUrl = getStrapiMedia(article?.attributes?.image)
-
 	const seo = {
 		metaTitle: article.attributes.title,
 		metaDescription: article.attributes.description,
 		shareImage: article.attributes.image,
 		article: true,
 	}
-
 	const { description, tags, content, author, title } = article.attributes
 	const itemsTags = tags.data
 

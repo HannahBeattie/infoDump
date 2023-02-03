@@ -1,5 +1,6 @@
 import Articles from '@/lib/components/Article'
 import Layout from '@/lib/components/Layout'
+import Search from '@/lib/components/Search'
 import Seo from '@/lib/components/Seo'
 import { Heading } from '@chakra-ui/react'
 import { fetchAPI } from '../lib/api'
@@ -17,7 +18,7 @@ const Home = ({ articles, categories, homepage }: any) => {
 			>
 				{homepage.attributes.hero.title}
 			</Heading>
-
+			{/* <Search /> */}
 			<Articles articles={articles} />
 		</Layout>
 	)
