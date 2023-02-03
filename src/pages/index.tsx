@@ -1,18 +1,17 @@
 import Articles from '@/lib/components/Article'
 import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
-import { Heading, VStack } from '@chakra-ui/react'
-import React from 'react'
-
+import { Heading } from '@chakra-ui/react'
 import { fetchAPI } from '../lib/api'
 
 const Home = ({ articles, categories, homepage }: any) => {
+	console.log(`<Home> homepage:`, homepage)
 	return (
 		<Layout categories={categories}>
 			<Seo seo={homepage.attributes.seo} />
 			<Heading
 				flex={1}
-				fontSize={{ base: '3xl', md: '5xl' }}
+				fontSize={{ base: '4xl', md: '5xl' }}
 				fontWeight={'bold'}
 				color={'blackAlpha.800'}
 				fontFamily={'Montserrat Subrayada'}
@@ -25,10 +24,16 @@ const Home = ({ articles, categories, homepage }: any) => {
 	)
 }
 
+// export async function fetchAllTags() {
+// 	const tags = await fetchAPI(`/tags`)
+// 	console.log('tags.data is:', tags.data)
+// 	return tags.data as TagType[]
+// }
+
 export async function getStaticProps() {
 	// Run API calls in parallel
-	const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-		fetchAPI('/articles', { populate: ['image', 'category'] }),
+	const [articlesRes, categoriesRes, homepageRes, tagsRes] = await Promise.all([
+		fetchAPI('/articles', { populate: ['image', 'category', 'tags'] }),
 		fetchAPI('/categories', { populate: '*' }),
 		fetchAPI('/homepage', {
 			populate: {
@@ -36,10 +41,12 @@ export async function getStaticProps() {
 				seo: { populate: '*' },
 			},
 		}),
+		fetchAPI('/tags', { populate: '*' }),
 	])
 
 	return {
 		props: {
+			tags: tagsRes.data,
 			articles: articlesRes.data,
 			categories: categoriesRes.data,
 			homepage: homepageRes.data,

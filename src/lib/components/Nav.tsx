@@ -40,7 +40,6 @@ export default function Nav({ pages }: any) {
 
 				<Spacer />
 				{pages.map((page: any) => {
-					console.log('clicked is', clicked)
 					return (
 						<LinkWrapper href={`/category/${page.attributes.slug}`} key={page.id}>
 							<Text

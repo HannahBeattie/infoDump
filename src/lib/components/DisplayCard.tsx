@@ -3,8 +3,17 @@ import { motion } from 'framer-motion'
 import LinkWrapper from './LinkWrapper'
 
 export default function DisplayCard({ article }: any) {
+	const { slug, tags, category } = article.attributes
+	console.log('tags are', tags)
+	const { data: tagsData } = tags
+	const {
+		data: { attributes: categoryData },
+	} = category
+
+	console.log('tagsData is', tags.data[0].attributes)
+
 	return (
-		<LinkWrapper href={`/article/${article.attributes.slug}`}>
+		<LinkWrapper href={`/article/${slug}`}>
 			<VStack
 				p={8}
 				color={'white'}
@@ -31,8 +40,22 @@ export default function DisplayCard({ article }: any) {
 							fontWeight={'bold'}
 							textTransform={'uppercase'}
 						>
-							{article.attributes.category.data.attributes.name}
+							{categoryData.name}
 						</Text>
+
+						{tags.data.length ? (
+							<Text
+								fontSize={'sm'}
+								color={'teal.400'}
+								fontWeight={'bold'}
+								textTransform={'uppercase'}
+							>
+								{tags.data[0].attributes.Tag}
+							</Text>
+						) : (
+							<Text>No tags!</Text>
+						)}
+
 						<Heading fontFamily={'Lora'} fontSize={'2xl'}>
 							{article.attributes.title}
 						</Heading>
