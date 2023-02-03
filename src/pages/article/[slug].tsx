@@ -2,7 +2,16 @@ import { chakraMdComps } from '@/lib/chakraMarkdown'
 import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
 import getStrapiMedia from '@/lib/getMedia'
-import { Heading, Image, Text, VStack } from '@chakra-ui/react'
+import {
+	Button,
+	ButtonGroup,
+	Heading,
+	HStack,
+	Image,
+	TagLabel,
+	Text,
+	VStack,
+} from '@chakra-ui/react'
 import ReactMarkdown from 'react-markdown'
 import { fetchAPI } from '../../lib/api'
 
@@ -16,25 +25,34 @@ const Article = ({ article, categories }: any) => {
 		article: true,
 	}
 
+	const { description, tags, content, author, title } = article.attributes
+
+	const itemsTags = article.attributes.tags.data
+	let eachTag = itemsTags.map((tag: any) => tag.attributes.name)
+	const tagLabels = eachTag.map((tag: string, id: string) => {
+		return <Button key={id}> {tag}</Button>
+	})
+
 	return (
 		<Layout categories={categories.data}>
 			<VStack spacing={4} color={'gray.900'}>
-				<Heading> {article.attributes.title}</Heading>
+				<Heading>{title}</Heading>
 
-				<Text fontWeight={'bold'}> {article.attributes.description}</Text>
+				<Text fontWeight={'bold'}> {description}</Text>
 			</VStack>
 			<Seo seo={seo} />
 			{imageUrl && <Image src={imageUrl} maxW={'600'} borderRadius={'lg'} alt={''}></Image>}
 			<VStack px={300} alignItems='stretch'>
 				<VStack p={8} borderRadius={'lg'} boxShadow={'lg'} px={8} alignItems='stretch'>
-					<ReactMarkdown components={chakraMdComps}>
-						{article.attributes.content}
-					</ReactMarkdown>
+					<ReactMarkdown components={chakraMdComps}>{content}</ReactMarkdown>
 
 					{/* <Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment> */}
 				</VStack>
 			</VStack>
-			<Text color={'white'}>by {article.attributes.author.data.attributes.name}</Text>
+			<Text color={'black'}>by {author.data.attributes.name}</Text>
+			<HStack>
+				{tags.data.length ? <ButtonGroup>{tagLabels}</ButtonGroup> : <Text>No tags!</Text>}
+			</HStack>
 
 			{/* <div>
 							{article.attributes.author.data.attributes.picture && (
@@ -71,8 +89,9 @@ export async function getStaticProps({ params }: any) {
 		filters: {
 			slug: params.slug,
 		},
-		populate: ['image', 'category', 'author.picture'],
+		populate: ['image', 'category', 'author.picture', 'tags'],
 	})
+
 	const categoriesRes = await fetchAPI('/categories')
 
 	return {

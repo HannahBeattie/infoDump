@@ -15,7 +15,7 @@ export default function DisplayCard({ article }: any) {
 
 	const itemsTags = article.attributes.tags.data
 
-	let eachTag = itemsTags.map((tag) => tag.attributes.name)
+	let eachTag = itemsTags.map((tag: any) => tag.attributes.name)
 	console.log('eachTag is:', eachTag)
 
 	// console.log('items tags', itemsTags)

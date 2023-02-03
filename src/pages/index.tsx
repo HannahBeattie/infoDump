@@ -5,7 +5,6 @@ import { Heading } from '@chakra-ui/react'
 import { fetchAPI } from '../lib/api'
 
 const Home = ({ articles, categories, homepage }: any) => {
-	// console.log(`<Home> homepage:`, homepage)
 	return (
 		<Layout categories={categories}>
 			<Seo seo={homepage.attributes.seo} />
