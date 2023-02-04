@@ -15,7 +15,7 @@ export default function Nav({ pages }: any) {
 		px: '4',
 		fontSize: 'md',
 		spacing: 4,
-		position: 'fixed',
+		position: 'sticky',
 		width: '100%',
 		display: { base: 'none', md: 'flex' },
 	} as StackProps

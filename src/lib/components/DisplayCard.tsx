@@ -27,50 +27,46 @@ export default function DisplayCard({ article }: any) {
 	const itemsTags = tags.data
 
 	return (
-		<Grid>
-			<GridItem w={{ md: '80vw' }}>
-				<LinkWrapper href={`/article/${slug}`} width={'100%'} height={'100%'}>
-					<VStack
-						p={8}
-						spacing={4}
-						outlineColor={'teal.900'}
-						border={'1px'}
-						borderBottom={'4px'}
-						borderRight={'4px'}
-						borderColor={'whiteAlpha.500'}
-						borderBottomColor={'whiteAlpha.700'}
-						borderRightColor={'whiteAlpha.800'}
-						bg={'blackAlpha.900'}
-						flex={1}
-						color={'white'}
-						alignItems={'stretch'}
-						borderRadius={'xl'}
-						boxShadow={'xl'}
+		<GridItem>
+			<LinkWrapper href={`/article/${slug}`}>
+				<VStack
+					width={'100%'}
+					height={'100%'}
+					p={8}
+					spacing={4}
+					outlineColor={'teal.900'}
+					border={'1px'}
+					borderBottom={'4px'}
+					borderRight={'4px'}
+					borderColor={'whiteAlpha.500'}
+					borderBottomColor={'whiteAlpha.700'}
+					borderRightColor={'whiteAlpha.800'}
+					bg={'blackAlpha.900'}
+					flex={1}
+					color={'white'}
+					alignItems={'stretch'}
+					borderRadius={'xl'}
+					boxShadow={'xl'}
+				>
+					<Text
+						fontSize={'sm'}
+						color={'red.400'}
+						fontWeight={'bold'}
+						textTransform={'uppercase'}
 					>
-						<Text
-							fontSize={'sm'}
-							color={'red.400'}
-							fontWeight={'bold'}
-							textTransform={'uppercase'}
-						>
-							{categoryData.name}
-						</Text>
+						{categoryData.name}
+					</Text>
 
-						<Heading fontFamily={'Lora'} fontSize={'2xl'}>
-							{article.attributes.title}
-						</Heading>
-						<Text fontSize={'lg'}>{article.attributes.description}</Text>
-						<HStack>
-							<Text fontWeight={'800'}>May contain:</Text>
-							{tags.data.length ? (
-								<Tags itemsTags={itemsTags} />
-							) : (
-								<Text>No tags!</Text>
-							)}
-						</HStack>
-					</VStack>
-				</LinkWrapper>
-			</GridItem>
-		</Grid>
+					<Heading fontFamily={'Lora'} fontSize={'2xl'}>
+						{article.attributes.title}
+					</Heading>
+					<Text fontSize={'lg'}>{article.attributes.description}</Text>
+					<HStack>
+						<Text fontWeight={'800'}>May contain:</Text>
+						{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
+					</HStack>
+				</VStack>
+			</LinkWrapper>
+		</GridItem>
 	)
 }

@@ -1,9 +1,6 @@
 import {
 	Link,
-	LinkProps,
-	StyleProps,
-	SystemCSSProperties,
-	SystemStyleFunction,
+	LinkProps
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'

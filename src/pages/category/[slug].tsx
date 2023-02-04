@@ -15,7 +15,6 @@ const Category = ({ category, categories }: any) => {
 		<Layout categories={categories.data}>
 			<Seo seo={seo} />
 			<Heading fontSize={'5xl'} fontWeight={'bold'} fontFamily={'Montserrat Subrayada'}>
-				{' '}
 				{category.attributes.name}
 			</Heading>
 			<Articles articles={category.attributes.articles.data} />

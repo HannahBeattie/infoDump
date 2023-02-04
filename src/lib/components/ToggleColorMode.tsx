@@ -7,7 +7,7 @@ export default function ToggleColorMode(props: ButtonProps) {
 		const { toggleColorMode } = useColorMode()
 		const mode = useColorModeValue(<BsLightbulb />, <BsLightbulbOff />)
 		const buttonStyles = {
-			top: '12',
+			bottom: '0',
 			bg: '',
 			_hover: { bg: '' }, //addHoverStyles here
 			_active: { bg: '0' },

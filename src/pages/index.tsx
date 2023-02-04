@@ -16,13 +16,15 @@ export default function Home({ articles, categories, homepage }: any) {
 			>
 				{homepage.attributes.hero.title}
 			</Heading>
+
 			{/* <Search /> */}
-			<Image maxH={'400'} src={'/bean.png'} alt={'A bean-like character'} />
 			<Container>
 				<VStack>
 					<Text fontWeight={'800'}>Bits of code to remember.</Text>
 				</VStack>
 			</Container>
+			<Image maxH={'400'} src={'/bean.png'} alt={'A bean-like character'} />
+
 			<Articles articles={articles} />
 		</Layout>
 	)
