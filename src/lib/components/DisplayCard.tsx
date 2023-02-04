@@ -1,4 +1,14 @@
-import { Box, Button, ButtonGroup, Heading, HStack, Text, VStack } from '@chakra-ui/react'
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	Grid,
+	GridItem,
+	Heading,
+	HStack,
+	Text,
+	VStack,
+} from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { fetchAPI } from '../api'
@@ -17,27 +27,26 @@ export default function DisplayCard({ article }: any) {
 	const itemsTags = tags.data
 
 	return (
-		<LinkWrapper href={`/article/${slug}`}>
-			<VStack
-				p={8}
-				color={'white'}
-				outlineColor={'teal.900'}
-				border={'1px'}
-				borderBottom={'4px'}
-				borderRight={'4px'}
-				borderColor={'whiteAlpha.500'}
-				borderBottomColor={'whiteAlpha.700'}
-				borderRightColor={'whiteAlpha.800'}
-				bg={'blackAlpha.900'}
-				flex={1}
-				alignItems={'stretch'}
-				width={{ md: 600 }}
-				height={{ md: 200 }}
-				borderRadius={'xl'}
-				boxShadow={'xl'}
-			>
-				<motion.div>
-					<VStack alignItems={'stretch'}>
+		<Grid>
+			<GridItem w={{ md: '80vw' }}>
+				<LinkWrapper href={`/article/${slug}`} width={'100%'} height={'100%'}>
+					<VStack
+						p={8}
+						spacing={4}
+						outlineColor={'teal.900'}
+						border={'1px'}
+						borderBottom={'4px'}
+						borderRight={'4px'}
+						borderColor={'whiteAlpha.500'}
+						borderBottomColor={'whiteAlpha.700'}
+						borderRightColor={'whiteAlpha.800'}
+						bg={'blackAlpha.900'}
+						flex={1}
+						color={'white'}
+						alignItems={'stretch'}
+						borderRadius={'xl'}
+						boxShadow={'xl'}
+					>
 						<Text
 							fontSize={'sm'}
 							color={'red.400'}
@@ -51,13 +60,17 @@ export default function DisplayCard({ article }: any) {
 							{article.attributes.title}
 						</Heading>
 						<Text fontSize={'lg'}>{article.attributes.description}</Text>
+						<HStack>
+							<Text fontWeight={'800'}>May contain:</Text>
+							{tags.data.length ? (
+								<Tags itemsTags={itemsTags} />
+							) : (
+								<Text>No tags!</Text>
+							)}
+						</HStack>
 					</VStack>
-				</motion.div>
-			</VStack>
-
-			<HStack py={4}>
-				{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
-			</HStack>
-		</LinkWrapper>
+				</LinkWrapper>
+			</GridItem>
+		</Grid>
 	)
 }

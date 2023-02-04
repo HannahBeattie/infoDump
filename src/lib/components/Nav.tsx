@@ -9,7 +9,7 @@ export default function Nav({ pages }: any) {
 	const currentRoute = router.pathname
 	const [clicked, setClicked] = useState<number | undefined>()
 	const props = {
-		bg: 'whiteAlpha.100',
+		bg: 'whiteAlpha.300',
 		boxShadow: 'xl-dark',
 		py: '0',
 		px: '4',

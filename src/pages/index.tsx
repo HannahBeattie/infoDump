@@ -1,7 +1,7 @@
 import Articles from '@/lib/components/Article'
 import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
-import { Heading } from '@chakra-ui/react'
+import { Heading, Container, Text, VStack, Image } from '@chakra-ui/react'
 import { fetchAPI } from '../lib/api'
 
 export default function Home({ articles, categories, homepage }: any) {
@@ -17,6 +17,12 @@ export default function Home({ articles, categories, homepage }: any) {
 				{homepage.attributes.hero.title}
 			</Heading>
 			{/* <Search /> */}
+			<Image maxH={'400'} src={'/bean.png'} alt={'A bean-like character'} />
+			<Container>
+				<VStack>
+					<Text fontWeight={'800'}>Bits of code to remember.</Text>
+				</VStack>
+			</Container>
 			<Articles articles={articles} />
 		</Layout>
 	)
