@@ -5,6 +5,7 @@ import Tags from '@/lib/components/Tags'
 import getStrapiMedia from '@/lib/getMedia'
 import { Container, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import Moment from 'react-moment'
 import { fetchAPI } from '../../lib/api'
 
 const Article = ({ article, categories }: any) => {
@@ -20,25 +21,27 @@ const Article = ({ article, categories }: any) => {
 
 	return (
 		<Layout categories={categories.data}>
-			<VStack spacing={8} flex={1}>
-				<Heading>{title}</Heading>
-				<HStack>
-					{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
-				</HStack>
-				<Container>
-					<Text color={'CaptionText'}> {description}</Text>
-				</Container>
-			</VStack>
 			<Seo seo={seo} />
-			{imageUrl && <Image src={imageUrl} maxW={'600'} borderRadius={'lg'} alt={''}></Image>}
+			<Heading>{title}</Heading>
+			<Container>
+				<VStack>
+					<HStack>
+						{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
+					</HStack>
+					<Text color={'Highlight'} pt={4} fontWeight={600}>
+						{' '}
+						{description}
+					</Text>
+				</VStack>
+			</Container>
 
-			<VStack borderRadius={'lg'} boxShadow={'lg'} alignItems='stretch'>
+			{/* {imageUrl && <Image src={imageUrl} maxW={'600'} borderRadius={'lg'} alt={''}></Image>} */}
+
+			<VStack alignItems='stretch' px={100}>
 				<ReactMarkdown components={chakraMdComps}>{content}</ReactMarkdown>
-
-				{/* <Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment> */}
+				<Text>by {author.data.attributes.name}</Text>
+				<Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment>
 			</VStack>
-
-			<Text>by {author.data.attributes.name}</Text>
 
 			{/* <div>
 							{article.attributes.author.data.attributes.picture && (
