@@ -12,7 +12,6 @@ export default function Home({ articles, categories, homepage }: any) {
 				flex={1}
 				fontSize={{ base: '4xl', md: '5xl' }}
 				fontWeight={'bold'}
-				color={'blackAlpha.800'}
 				fontFamily={'Montserrat Subrayada'}
 			>
 				{homepage.attributes.hero.title}

@@ -1,5 +1,6 @@
 import { fetchAPI } from '@/lib/api'
 import Footer from '@/lib/components/Footer'
+import ToggleColorMode from '@/lib/components/ToggleColorMode'
 import getStrapiMedia from '@/lib/getMedia'
 import { ChakraProvider, VStack } from '@chakra-ui/react'
 import App from 'next/app'
@@ -25,15 +26,8 @@ const MyApp = ({ Component, pageProps }: any) => {
 			</Head>
 			<ChakraProvider>
 				<GlobalContext.Provider value={global.attributes}>
-					<VStack
-						flex={1}
-						color={'black'}
-						bgGradient={'linear(to-r, #030303.200#333333nk.500)'}
-						alignItems={'stretch'}
-						minH={'100vh'}
-						spacing={0}
-						py={0}
-					>
+					<VStack flex={1} alignItems={'stretch'} minH={'100vh'} spacing={0} py={0}>
+						<ToggleColorMode />
 						<Component {...pageProps} />
 						<Footer />
 					</VStack>

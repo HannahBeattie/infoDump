@@ -19,9 +19,7 @@ import {
 	Tr,
 } from '@chakra-ui/react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { stackoverflowDark as highlightStyles } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
-// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-// import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { railscasts as highlightStyles } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 
 function getCoreProps(props: any) {
 	return props['data-sourcepos'] ? { 'data-sourcepos': props['data-sourcepos'] } : {}
@@ -72,15 +70,10 @@ export const chakraMdComps = {
 			)
 		}
 
-		return !inline && match ? (
+		return match ? (
 			<SyntaxHighlighter
 				style={highlightStyles}
-				// customStyle={
-				// 	{
-				// 		// color: 'white',
-				// 		// backgroundColor: 'black',
-				// 	}
-				// }
+				customStyle={{ padding: '3rem', backgroundColor: '#101213' }}
 				language={match[1]}
 				PreTag='div'
 				{...props}

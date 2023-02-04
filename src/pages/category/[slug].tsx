@@ -14,12 +14,7 @@ const Category = ({ category, categories }: any) => {
 	return (
 		<Layout categories={categories.data}>
 			<Seo seo={seo} />
-			<Heading
-				fontSize={'5xl'}
-				fontWeight={'bold'}
-				color={'blackAlpha.800'}
-				fontFamily={'Montserrat Subrayada'}
-			>
+			<Heading fontSize={'5xl'} fontWeight={'bold'} fontFamily={'Montserrat Subrayada'}>
 				{' '}
 				{category.attributes.name}
 			</Heading>

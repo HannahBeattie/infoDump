@@ -20,8 +20,11 @@ const Article = ({ article, categories }: any) => {
 
 	return (
 		<Layout categories={categories.data}>
-			<VStack spacing={4} color={'gray.900'}>
+			<VStack spacing={4}>
 				<Heading>{title}</Heading>
+				<HStack>
+					{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
+				</HStack>
 
 				<Text fontWeight={'bold'}> {description}</Text>
 			</VStack>
@@ -34,10 +37,7 @@ const Article = ({ article, categories }: any) => {
 					{/* <Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment> */}
 				</VStack>
 			</VStack>
-			<Text color={'black'}>by {author.data.attributes.name}</Text>
-			<HStack>
-				{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
-			</HStack>
+			<Text>by {author.data.attributes.name}</Text>
 
 			{/* <div>
 							{article.attributes.author.data.attributes.picture && (

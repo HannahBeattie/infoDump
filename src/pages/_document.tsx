@@ -12,7 +12,6 @@ export default function Document() {
 				flex={1}
 				spacing={0}
 				padding={0}
-				// bg={'#110e1a'}
 				color={'white'}
 			>
 				<Main />
