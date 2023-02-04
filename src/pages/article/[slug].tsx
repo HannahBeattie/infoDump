@@ -3,7 +3,7 @@ import Layout from '@/lib/components/Layout'
 import Seo from '@/lib/components/Seo'
 import Tags from '@/lib/components/Tags'
 import getStrapiMedia from '@/lib/getMedia'
-import { Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Container, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { fetchAPI } from '../../lib/api'
 
@@ -20,23 +20,24 @@ const Article = ({ article, categories }: any) => {
 
 	return (
 		<Layout categories={categories.data}>
-			<VStack spacing={4}>
+			<VStack spacing={8} flex={1}>
 				<Heading>{title}</Heading>
 				<HStack>
 					{tags.data.length ? <Tags itemsTags={itemsTags} /> : <Text>No tags!</Text>}
 				</HStack>
-
-				<Text fontWeight={'bold'}> {description}</Text>
+				<Container>
+					<Text color={'CaptionText'}> {description}</Text>
+				</Container>
 			</VStack>
 			<Seo seo={seo} />
 			{imageUrl && <Image src={imageUrl} maxW={'600'} borderRadius={'lg'} alt={''}></Image>}
-			<VStack px={300} alignItems='stretch'>
-				<VStack p={8} borderRadius={'lg'} boxShadow={'lg'} px={8} alignItems='stretch'>
-					<ReactMarkdown components={chakraMdComps}>{content}</ReactMarkdown>
 
-					{/* <Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment> */}
-				</VStack>
+			<VStack borderRadius={'lg'} boxShadow={'lg'} alignItems='stretch'>
+				<ReactMarkdown components={chakraMdComps}>{content}</ReactMarkdown>
+
+				{/* <Moment format='MMM Do YYYY'>{article.attributes.published_at}</Moment> */}
 			</VStack>
+
 			<Text>by {author.data.attributes.name}</Text>
 
 			{/* <div>

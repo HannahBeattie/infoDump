@@ -9,13 +9,12 @@ export default function Nav({ pages }: any) {
 	const currentRoute = router.pathname
 	const [clicked, setClicked] = useState<number | undefined>()
 	const props = {
-		bg: 'blackAlpha.800',
+		bg: 'whiteAlpha.100',
 		boxShadow: 'xl-dark',
 		py: '0',
 		px: '4',
 		fontSize: 'md',
 		spacing: 4,
-		color: 'white',
 		position: 'fixed',
 		width: '100%',
 		display: { base: 'none', md: 'flex' },
@@ -32,6 +31,7 @@ export default function Nav({ pages }: any) {
 							fontSize='xl'
 							py={2}
 							fontWeight='extrabold'
+							color={'MenuText'}
 						>
 							info-dump
 						</Text>
@@ -46,7 +46,8 @@ export default function Nav({ pages }: any) {
 								onClick={() => setClicked(page.id)}
 								textTransform={'uppercase'}
 								fontWeight={page.id === clicked ? '800' : '600'}
-								color={page.id === clicked ? 'gray.300' : 'white'}
+								color={'MenuText'}
+								// color={page.id === clicked ? 'gray.300' : 'gray'}
 								fontFamily={'sans-serif'}
 							>
 								{page.attributes.name}

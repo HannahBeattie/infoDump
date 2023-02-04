@@ -11,7 +11,7 @@ export default function Layout({ props, children, categories, seo }: any) {
 		...props,
 	}
 	return (
-		<VStack flex={1} alignItems={'stretch'} py={0} spacing={0}>
+		<VStack flex={1} alignItems={'stretch'} py={0} spacing={0} color={'InfoText'}>
 			<Nav pages={categories} />
 			<VStack {...stackProps} py={{ md: 90, base: 8 }}>
 				{children}
