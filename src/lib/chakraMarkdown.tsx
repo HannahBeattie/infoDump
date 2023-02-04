@@ -18,6 +18,10 @@ import {
 	Thead,
 	Tr,
 } from '@chakra-ui/react'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { atomOneDarkReasonable as highlightStyles } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+// import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 function getCoreProps(props: any) {
 	return props['data-sourcepos'] ? { 'data-sourcepos': props['data-sourcepos'] } : {}
@@ -58,6 +62,7 @@ export const chakraMdComps = {
 	},
 	code: (props: any) => {
 		const { inline, children, className } = props
+		const match = /language-(\w+)/.exec(className || '')
 
 		if (inline) {
 			return (
@@ -67,7 +72,22 @@ export const chakraMdComps = {
 			)
 		}
 
-		return (
+		return !inline && match ? (
+			<SyntaxHighlighter
+				style={highlightStyles}
+				// customStyle={
+				// 	{
+				// 		// color: 'white',
+				// 		// backgroundColor: 'black',
+				// 	}
+				// }
+				language={match[1]}
+				PreTag='div'
+				{...props}
+			>
+				{String(children).replace(/\n$/, '')}
+			</SyntaxHighlighter>
+		) : (
 			<Code className={className} whiteSpace='break-spaces' display='block' w='full' p={2}>
 				{children}
 			</Code>

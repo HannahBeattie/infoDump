@@ -4,7 +4,6 @@ const nextConfig = {
 }
 
 module.exports = {
-	nextConfig,
 	reactStrictMode: true,
 	images: {
 		loader: 'default',

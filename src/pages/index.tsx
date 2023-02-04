@@ -1,11 +1,10 @@
 import Articles from '@/lib/components/Article'
 import Layout from '@/lib/components/Layout'
-import Search from '@/lib/components/Search'
 import Seo from '@/lib/components/Seo'
 import { Heading } from '@chakra-ui/react'
 import { fetchAPI } from '../lib/api'
 
-const Home = ({ articles, categories, homepage }: any) => {
+export default function Home({ articles, categories, homepage }: any) {
 	return (
 		<Layout categories={categories}>
 			<Seo seo={homepage.attributes.seo} />
@@ -48,5 +47,3 @@ export async function getStaticProps() {
 		revalidate: 1,
 	}
 }
-
-export default Home

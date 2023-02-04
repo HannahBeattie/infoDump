@@ -4,7 +4,7 @@ import Seo from '@/lib/components/Seo'
 import Tags from '@/lib/components/Tags'
 import getStrapiMedia from '@/lib/getMedia'
 import { Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
-import ReactMarkdown from 'react-markdown'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { fetchAPI } from '../../lib/api'
 
 const Article = ({ article, categories }: any) => {
