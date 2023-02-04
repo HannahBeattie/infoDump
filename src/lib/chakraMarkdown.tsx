@@ -19,7 +19,7 @@ import {
 	Tr,
 } from '@chakra-ui/react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { atomOneDarkReasonable as highlightStyles } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import { stackoverflowDark as highlightStyles } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 // import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 // import { dark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
